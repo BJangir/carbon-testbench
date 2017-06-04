@@ -36,7 +36,7 @@ fi
 TABLES="part partsupp supplier customer orders lineitem nation region"
 
 mkdir -p ${DSS_PATH}
-sudo hdfs dfs -mkdir -p ${DSS_PATH}
+sudo hdfs dfs -mkdir -p ${DSS_PATH}/${SCALE}
 sudo hdfs dfs -ls ${DSS_PATH}/${SCALE}/lineitem > /dev/null
 
 
@@ -54,4 +54,3 @@ chmod 777 $DSS_DIS_QUERY
 cd $TPCH_HOME/dbgen
 sudo DSS_PATH=$DSS_PATH $TPCH_HOME/dbgen/dbgen -f -s ${SCALE}
 sudo DSS_QUERY=${DSS_QUERY} $TPCH_HOME/dbgen/qgen -s ${SCALE} > $DSS_DIS_QUERY
-
